@@ -1,0 +1,263 @@
+@font-face {
+    font-family: "Inter";
+    src: url("./fonts/Inter.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: 0;
+}
+
+/* ==========================================
+   Переменные: Светлая тема (по умолчанию)
+   ========================================== */
+:root {
+    /* Цвета для светлой темы */
+    --text-color-primary: #403F3D;
+    --text-color-inverse: #E1D4C9;
+    --text-color-accent: #B0907A;
+    
+    --bg-color-page: #E1D4C9;
+    --bg-color-container: #665F55;
+    --bg-color-overlay: #403F3D;
+    
+    --border-color-primary: #C1B6AD;
+    --border-color-inverse: #665F55;
+
+    /* Типографика (не зависит от темы) */
+    --font-heading1: 600 72px/105% "Inter", sans-serif;
+    --font-heading-accent: italic 600 72px/105% "Inter", sans-serif;
+    --font-heading2: 600 60px/125% "Inter", sans-serif;
+    --font-heading2-accent: italic 600 60px/125% "Inter", sans-serif;
+    --font-heading3: 400 16px/150% "Inter", sans-serif;
+    --font-medium: 400 16px/150% "Inter", sans-serif;
+    --font-caption: 600 10px/140% "Inter", sans-serif;
+
+    /* Плавный переход при смене темы */
+    --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ==========================================
+   Переменные: Тёмная тема
+   ========================================== */
+[data-theme="dark"] {
+    --text-color-primary: #E1D4C9;
+    --text-color-inverse: #403F3D;
+    --text-color-accent: #B0907A;
+    
+    --bg-color-page: #292826;
+    --bg-color-container: #403F3D;
+    --bg-color-overlay: #292826;
+    
+    --border-color-primary: #665F55;
+    --border-color-inverse: #C1B6AD;
+}
+
+/* ==========================================
+   CSS Reset / Базовые стили
+   ========================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--bg-color-page);
+  color: var(--text-color-primary);
+  font-family: "Inter", sans-serif;
+  line-height: 1.5;
+  transition: var(--theme-transition);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a, button {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 150%;
+}
+
+.wrapper {
+  max-width: 1360px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* header ------------- */
+
+header {
+  width: 100%;
+  height: 100px;
+  padding: 20px 0;
+}
+
+header nav ul {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+/* Переключатель-капсула */
+.theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px;
+
+  background-color: var(--bg-color-container);
+  border: 1px solid var(--border-color-primary);
+  border-radius: 100px;
+
+  transition: var(--theme-transition);
+}
+
+.theme-toggle__ball {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+  background-color: var(--bg-color-page);
+
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+
+  z-index: 1;
+}
+
+.theme-toggle__btn {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.theme-toggle__icon {
+  width: 24px;
+  height: 24px;
+}
+
+[data-theme="dark"] .theme-toggle__ball {
+  transform: translateX(48px);
+}
+
+[data-theme="dark"] .theme-toggle__icon--moon {
+  filter: invert(1);
+}
+.menu__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; 
+  cursor: pointer;
+  border-bottom: 2px solid transparent; /* Исправлено */
+  transition: border-color 0.3s ease; 
+  padding: 4px 0;
+}
+
+.menu__btn:hover {
+  border-bottom-color: var(--text-color-primary);
+}
+
+/* favorite-coffee ------------ */
+.favorite-coffee {
+  height: 644px;
+}
+.favorite-coffee__img{
+  height: 100%;
+  width: 100%;
+  background-image: url(./images/img-hero.png);
+  background-size: cover;
+  /* z-index: -1; */
+  border-radius: 40px;
+}
+.favorite-wrapper {
+  max-width: 530px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
+  margin: 100px 0 0 100px;
+  gap: 40px;
+}
+
+.favorite-coffee__title {
+  font: var(--font-heading1);
+  color: var(--text-color-inverse);
+}
+.favorite-coffee__title span {
+  font: var(--font-heading-accent);
+  color: var(--text-color-accent);
+}
+
+.favorite-coffee__text {
+  font: var(--font-heading3);
+  color: var(--text-color-inverse);
+  /* margin-bottom: 32px; */
+}
+
+.favorite-coffee__btn {
+  width: 200px;
+  height: 65px;
+  border-radius: 100px;
+  background-color: var(--bg-color-page);
+  font: var(--font-heading3);
+  }
+
+  

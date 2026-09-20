@@ -2,14 +2,71 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee House</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffee House</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  <header>
+    <div class="wrapper">
 
+      <img src="./images//logo.svg" alt="Coffee House logo">
+      <nav>
+        <ul>
+          <li><a href="#favorite-coffee">Favorite coffee</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#mobile-app">Mobile app</a></li>
+          <li><a href="#contact">Contact us</a></li>
+        </ul>
+      </nav>
+      <div class="menu">
+        <div class="theme-toggle" id="theme-toggle">
+
+          <div class="theme-toggle__ball"></div>
+
+          <button class="theme-toggle__btn" id="btn-light" aria-label="Светлая тема">
+            <img src="./images/sun.svg" alt="sun" class="theme-toggle__icon">
+          </button>
+
+          <button class="theme-toggle__btn" id="btn-dark" aria-label="Тёмная тема">
+            <img src="./images/moon.svg" alt="moon" class="theme-toggle__icon theme-toggle__icon--moon">
+          </button>
+
+        </div>
+        <button class="menu__btn">Menu <img src="./images/coffee-cup.svg" alt="coffee cup"></button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="favorite-coffee">
+      <div class="wrapper">
+        <div class="favorite-coffee__img">
+          <div class="favorite-wrapper">
+            <h1 class="favorite-coffee__title"><span>Enjoy</span> premium coffee at our charming cafe</h1>
+            <p class="favorite-coffee__text">With its inviting atmosphere and delicious coffee options, the Coffee House
+              Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy
+              their
+              favorite beverage.</p>
+            <button class="favorite-coffee__btn" title="переход на вторую страницу">Menu</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <section>
+      <div class="wrapper"></div>
+    </section>
+    <section class="about">
+      <div class="wrapper"></div>
+    </section>
+    <section class="mobile-app">
+      <div class="wrapper"></div>
+    </section>
+  </main>
+  <footer class="footer contact"></footer>
+  <script src="script.js"></script>
 </body>
 
 </html>
