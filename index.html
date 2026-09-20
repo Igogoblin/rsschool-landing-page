@@ -15,7 +15,7 @@
       <img src="./images//logo.svg" alt="Coffee House logo">
       <nav>
         <ul>
-          <li><a href="#favorite-coffee">Favorite coffee</a></li>
+          <li><a href="#hero-coffee">hero coffee</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#mobile-app">Mobile app</a></li>
           <li><a href="#contact">Contact us</a></li>
@@ -40,23 +40,47 @@
     </div>
   </header>
   <main>
-    <section class="favorite-coffee">
+    <section class="hero-coffee">
       <div class="wrapper">
-        <div class="favorite-coffee__img">
-          <div class="favorite-wrapper">
-            <h1 class="favorite-coffee__title"><span>Enjoy</span> premium coffee at our charming cafe</h1>
-            <p class="favorite-coffee__text">With its inviting atmosphere and delicious coffee options, the Coffee House
+        <div class="hero-coffee__img">
+          <div class="hero-wrapper">
+            <h1 class="hero-coffee__title"><span>Enjoy</span> premium coffee at our charming cafe</h1>
+            <p class="hero-coffee__text">With its inviting atmosphere and delicious coffee options, the Coffee House
               Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy
               their
-              favorite beverage.</p>
-            <button class="favorite-coffee__btn" title="переход на вторую страницу">Menu</button>
+              hero beverage.</p>
+            <button class="hero-coffee__btn" title="переход на вторую страницу">Menu</button>
           </div>
         </div>
 
       </div>
     </section>
-    <section>
-      <div class="wrapper"></div>
+    <section class="favorite-coffee">
+      <div class="wrapper">
+        <h2>Choose your <span>favorite</span> coffee</h2>
+        <div class="slider">
+          <button class="slider__btn slider__btn--prev" aria-label="Предыдущий слайд">
+            <img src="./images/arrow-right.svg" alt="arrow left">
+          </button>
+          <div class="slider-card">
+            <div class="slider-card__img">
+              <img src="./images/coffee-slider-1.png" alt="coffee 1">
+            </div>
+            <h3 class="slider-card__title">S’mores Frappuccino</h3>
+            <p class="slider-card__text">This new drink takes an espresso and mixes it with brown sugar and cinnamon
+              before being topped with oat milk.</p>
+            <p class="slider-card__price"><span>$5.50</span></p>
+          </div>
+          <button class="slider__btn slider__btn--next" aria-label="Следующий слайд">
+            <img src="./images/arrow-right.svg" alt="arrow right">
+          </button>
+        </div>
+        <div class="slider-dots">
+          <button class="slider-dots__dot slider-dots__dot--active" aria-label="Слайд 1"></button>
+          <button class="slider-dots__dot" aria-label="Слайд 2"></button>
+          <button class="slider-dots__dot" aria-label="Слайд 3"></button>
+        </div>
+      </div>
     </section>
     <section class="about">
       <div class="wrapper"></div>
