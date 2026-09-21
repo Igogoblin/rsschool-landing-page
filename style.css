@@ -894,12 +894,12 @@ footer .wrapper {
   flex-direction: column;
   gap: 40px;
 }
-.offer h2 {
+.offer h1 {
   font: var(--font-heading2);
   color: var(--text-color-primary);
   text-align: center;
 }
-.offer h2 span {
+.offer h1 span {
   font: var(--font-heading2-accent);
   color: var(--text-color-accent);
 }
@@ -922,8 +922,8 @@ footer .wrapper {
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 @media (max-width: 565px) {
-  .offer h2,
-  .offer h2 span {
+  .offer h1,
+  .offer h1 span {
     font-size: 32px;
     line-height: 125%;
   }
