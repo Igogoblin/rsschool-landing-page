@@ -27,7 +27,7 @@
           <div class="theme-toggle__ball"></div>
 
           <button class="theme-toggle__btn" id="btn-light" aria-label="Светлая тема">
-            <img src="./images/sun.svg" alt="sun" class="theme-toggle__icon">
+            <img src="./images/sun.svg" alt="sun" class="theme-toggle__icon theme-toggle__icon--sun">
           </button>
 
           <button class="theme-toggle__btn" id="btn-dark" aria-label="Тёмная тема">
@@ -35,12 +35,14 @@
           </button>
 
         </div>
-        <button class="menu__btn">Menu <img src="./images/coffee-cup.svg" alt="coffee cup"></button>
+        <button class="menu__btn" aria-label="Открыть меню">
+          <span class="menu__btn-text">Menu <img src="./images/coffee-cup.svg" alt="coffee cup"></span>
+          <span class="menu__btn-icon"></span>
+        </button>
       </div>
-    </div>
   </header>
   <main>
-    <section class="hero-coffee">
+    <section class="hero-coffee" id="hero-coffee">
       <div class="wrapper">
         <div class="hero-coffee__img">
           <div class="hero-wrapper">
@@ -49,7 +51,8 @@
               Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy
               their
               hero beverage.</p>
-            <button class="hero-coffee__btn" title="переход на вторую страницу">Menu</button>
+            <button class="hero-coffee__btn" title="переход на вторую страницу">Menu<img src="./images/coffee-cup.svg"
+                alt="coffee cup"></button>
           </div>
         </div>
 
@@ -82,7 +85,7 @@
         </div>
       </div>
     </section>
-    <section class="about">
+    <section class="about" id="about">
       <div class="wrapper">
         <h2 class="about-title">Resource is <span>the perfect and cozy place</span> where you can enjoy a variety of hot
           beverages, relax, catch up with friends, or get some work done.</h2>
@@ -102,7 +105,7 @@
         </div>
       </div>
     </section>
-    <section class="mobile-app">
+    <section class="mobile-app" id="mobile-app">
       <div class="wrapper">
         <div class="mobile-app__information">
           <h2 class="mobile-app__title"><span>Download</span> our apps to start ordering</h2>
@@ -133,7 +136,7 @@
       </div>
     </section>
   </main>
-  <footer class="footer">
+  <footer class="footer" id="contact">
     <div class="wrapper">
       <div class="footer__content">
         <h2>Sip, Savor, Smile.<br><span>It’s coffee time!</span></h2>
@@ -158,7 +161,7 @@
         <div class="footer-contacts__items">
           <div class="footer-contacts__item">
             <img src="./images/pin-alt.svg" alt="location">
-            <p>8558 Green Rd., LA</p>
+            <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">8558 Green Rd., LA</a>
           </div>
           <div <div class="footer-contacts__item">
             <img src="./images/phone.svg" alt="phone">
@@ -169,7 +172,7 @@
             <p>Mon-Sun: 9:00 AM - 23:00 PM</p>
           </div>
         </div>
-      </d>
+        </d>
   </footer>
   <script src="script.js"></script>
 </body>

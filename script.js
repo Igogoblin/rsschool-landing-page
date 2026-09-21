@@ -1,29 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const btnLight = document.getElementById('btn-light');
-  const btnDark = document.getElementById('btn-dark');
+  const themeToggle = document.getElementById('theme-toggle');
 
   const setTheme = (theme) => {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem('theme', theme);
   };
 
+  // Инициализация темы при загрузке
   const savedTheme = localStorage.getItem('theme');
-
   if (savedTheme) {
     setTheme(savedTheme);
   } else {
-    const prefersDark = window.matchMedia(
-      '(prefers-color-scheme: dark)'
-    ).matches;
-
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     setTheme(prefersDark ? 'dark' : 'light');
   }
 
-  btnLight.addEventListener('click', () => {
-    setTheme('light');
-  });
-
-  btnDark.addEventListener('click', () => {
-    setTheme('dark');
+  // Клик по всей области переключателя
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.dataset.theme;
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
   });
 });
