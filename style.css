@@ -107,7 +107,9 @@ a, button {
   font-weight: 600;
   line-height: 150%;
 }
-
+address {
+  font-style: normal;
+}
 .wrapper {
   max-width: 1360px;
   height: 100%;
@@ -482,4 +484,97 @@ header nav ul {
 .mobile-app__btn img {
   width: 32px;
   height: 32px;
+}
+/* footer ----------- */
+footer .wrapper {
+  background-color: var(--bg-color-container);
+  padding: 100px;
+  border-radius: 100px;
+  display: flex;
+  justify-content: start;
+  gap: 100px;
+}
+
+/* Контейнер для выстраивания кнопок в ряд */
+.footer__socials {
+  display: flex;
+  gap: 12px; /* Отступ между кнопками */
+}
+
+/* Круглая кнопка-обертка */
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  
+  border: 1px solid var(--border-color-primary);
+  background-color: transparent;
+  
+  /* Плавный переход для ховера */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.footer__content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.footer__content h2 {
+  font: var(--font-heading2);
+  color: var(--text-color-inverse);
+}
+.footer__content h2 span {
+  font: var(--font-heading2-accent);
+  color: var(--text-color-accent);
+}
+
+/* Картинка внутри круга */
+.social-link img {
+  width: 24px;
+  height: 24px;
+  /* Для инверсии цвета иконки при тёмной теме, если требуется */
+  transition: filter 0.3s ease;
+}
+
+/* Эффект при наведении (согласно макету) */
+.social-link:hover {
+  background-color: var(--bg-color-container);
+  border-color: var(--bg-color-container);
+}
+
+/* Цвет иконки при ховере */
+.social-link:hover img {
+  filter: brightness(0) invert(1);
+}
+
+.footer-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.footer-contacts h3 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 125%;
+  color: var(--text-color-inverse);
+}
+.footer-contacts__items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.footer-contacts__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font: var(--font-medium);
+  color: var(--text-color-inverse);
+}
+
+.footer-contacts__item img {
+  width: 24px;
+  height: 24px;
 }
