@@ -601,7 +601,9 @@ header nav ul li:hover {
 .about-img__item--4 {
   margin-top: -160px;
 }
-
+.about-img__item:hover {
+  transform: scale(1.01);
+}
 @media (max-width: 1024px) {
   .about {
     padding: 0 16px;
@@ -983,6 +985,7 @@ display: flex;
 }
 .menu-list__item:hover {
   background-color: var(--bg-color-page);
+  transform: scale(1.01);
 }
 
 .menu-list__item-img {
