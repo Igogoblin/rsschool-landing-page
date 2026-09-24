@@ -716,6 +716,10 @@ header nav ul li:hover {
   width: 32px;
   height: 32px;
 }
+.mobile-app__btn:hover {
+  background-color: var(--bg-color-primary);
+  color: var(--text-color-secondary);
+}
 .mobile-app__img {
   max-width: 630px;
   height: 630px;
@@ -986,6 +990,8 @@ display: flex;
 .menu-list__item:hover {
   background-color: var(--bg-color-page);
   transform: scale(1.01);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 }
 
 .menu-list__item-img {
