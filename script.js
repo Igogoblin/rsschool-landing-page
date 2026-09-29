@@ -1,12 +1,15 @@
+// ПЕРЕКЛЮЧЕНИЕ ТЕМЫ (LIGHT / DARK)
+
 document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
+
+  if (!themeToggle) return;
 
   const setTheme = (theme) => {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem('theme', theme);
   };
 
-  // Инициализация темы при загрузке
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme) {
     setTheme(savedTheme);
@@ -15,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTheme(prefersDark ? 'dark' : 'light');
   }
 
-  // Клик по всей области переключателя
   themeToggle.addEventListener('click', () => {
     const currentTheme = document.documentElement.dataset.theme;
     const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -23,15 +25,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// БУРГЕР-МЕНЮ И НАВИГАЦИЯ
+
 document.addEventListener('DOMContentLoaded', () => {
   const burgerBtn = document.getElementById('burger-btn');
   const navMenu = document.getElementById('nav-menu');
-  const navLinks = document.querySelectorAll('nav a');
+
+  if (!burgerBtn || !navMenu) return;
+
+  const navLinks = navMenu.querySelectorAll('a');
+  const isMenuPage = window.location.pathname.includes('menu.html');
 
   function toggleMenu() {
-    const isOpen = burgerBtn.classList.toggle('menu__btn--active');
-    navMenu.classList.toggle('nav--active');
-    document.body.classList.toggle('no-scroll');
+    const isOpen = navMenu.classList.toggle('nav--active');
+    burgerBtn.classList.toggle('menu__btn--active', isOpen);
+    document.body.classList.toggle('no-scroll', isOpen);
     burgerBtn.setAttribute('aria-expanded', isOpen);
   }
 
@@ -42,30 +50,44 @@ document.addEventListener('DOMContentLoaded', () => {
     burgerBtn.setAttribute('aria-expanded', 'false');
   }
 
-  // Клик по бургеру
   burgerBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    // Если мы на десктопе (видно текст Menu), клик ведет на страницу menu.html
-    if (window.innerWidth > 768) {
+
+   if (window.innerWidth > 850 && !isMenuPage) {
       window.location.href = './menu.html';
-    } else {
-      toggleMenu();
+      return;
     }
+
+    toggleMenu();
   });
 
-  // Закрытие при клике по любой ссылке меню
-  navLinks.forEach(link => {
+  navLinks.forEach((link) => {
     link.addEventListener('click', closeMenu);
   });
 
-  // Закрытие при клике вне меню
   document.addEventListener('click', (e) => {
-    if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
+    if (
+      navMenu.classList.contains('nav--active') &&
+      !navMenu.contains(e.target) &&
+      !burgerBtn.contains(e.target)
+    ) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 850) {
       closeMenu();
     }
   });
 });
-// слайдер
+
+// СЛАЙДЕР (FAVORITE COFFEE)
+
 document.addEventListener('DOMContentLoaded', () => {
   const track = document.getElementById('slider-track');
   const prevBtn = document.getElementById('slider-prev');
@@ -73,34 +95,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const dots = document.querySelectorAll('.slider-dots__dot');
   const cards = document.querySelectorAll('.slider-card');
 
+if (!track || !prevBtn || !nextBtn) return;
+
   let currentIndex = 0;
   const totalSlides = cards.length;
 
-  // Обновление положения слайдера и индикаторов
   function updateSlider(index) {
     currentIndex = index;
 
-    // Зацикливание вызова (с 3-го слайда переходит на 1-й и наоборот)
     if (currentIndex < 0) {
       currentIndex = totalSlides - 1;
     } else if (currentIndex >= totalSlides) {
       currentIndex = 0;
     }
 
-    // Сдвиг трека на ширину 100% за каждый индекс
     track.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-    // Обновление активной полоски в dots
     dots.forEach((dot, idx) => {
       dot.classList.toggle('slider-dots__dot--active', idx === currentIndex);
     });
   }
 
-  // Клик по кнопкам "Вперед" / "Назад"
   nextBtn.addEventListener('click', () => updateSlider(currentIndex + 1));
   prevBtn.addEventListener('click', () => updateSlider(currentIndex - 1));
 
-  // Клик по полоскам (dots)
   dots.forEach(dot => {
     dot.addEventListener('click', (e) => {
       const index = Number(e.target.dataset.index);
@@ -108,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Поддержка свайпов на тач-экранах (для мобильных)
   let startX = 0;
   let endX = 0;
 
@@ -123,11 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function handleSwipe() {
     const diff = startX - endX;
-    if (Math.abs(diff) > 50) { // Минимальная дистанция для свайпа (50px)
+    if (Math.abs(diff) > 50) {
       if (diff > 0) {
-        updateSlider(currentIndex + 1); // Свайп влево
+        updateSlider(currentIndex + 1);
       } else {
-        updateSlider(currentIndex - 1); // Свайп вправо
+        updateSlider(currentIndex - 1);
       }
     }
   }

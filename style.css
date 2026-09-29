@@ -7,7 +7,6 @@
 }
 
 :root {
-    /* Цвета для светлой темы */
     --text-color-primary: #403F3D;
     --text-color-inverse: #E1D4C9;
     --text-color-accent: #B0907A;
@@ -19,7 +18,6 @@
     --border-color-primary: #C1B6AD;
     --border-color-inverse: #665F55;
 
-    /* Типографика (не зависит от темы) */
     --font-heading1: 600 72px/105% "Inter", sans-serif;
     --font-heading-accent: italic 600 72px/105% "Inter", sans-serif;
     --font-heading2: 600 60px/125% "Inter", sans-serif;
@@ -28,7 +26,6 @@
     --font-medium: 400 16px/150% "Inter", sans-serif;
     --font-caption: 600 10px/140% "Inter", sans-serif;
 
-    /* Плавный переход при смене темы */
     --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -128,8 +125,7 @@ header .wrapper {
   justify-content: space-between;
 }
 
-/* 1. Логотип в тёмной теме */
-[data-theme="dark"] header .wrapper > img {
+[data-theme="dark"] header .logo img {
   filter: invert(1) hue-rotate(180deg);
   transition: filter 0.3s ease;
 }
@@ -156,8 +152,8 @@ header nav ul li:hover {
   gap: 24px;
   align-items: center;
 }
+  /* THEME TOGGLE*/
 
-/* Переключатель-капсула темы */
 .theme-toggle {
   position: relative;
   display: flex;
@@ -172,26 +168,44 @@ header nav ul li:hover {
   user-select: none;
 }
 
-.theme-toggle__btn,
-.theme-toggle__icon {
-  pointer-events: none;
-  background: transparent;
-  border: none;
+.theme-toggle__btn {
+  position: relative;
+  z-index: 2;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+
+  width: 36px;
+  height: 36px;
+
+  padding: 0;
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.theme-toggle__btn,
+.theme-toggle__icon {
+  pointer-events: none;
 }
 
 .theme-toggle__ball {
   position: absolute;
   top: 3px;
   left: 3px;
+
   width: 36px;
   height: 36px;
+
   border-radius: 50%;
   background-color: var(--text-color-accent);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.3s ease;
+
   z-index: 1;
 }
 
@@ -202,41 +216,55 @@ header nav ul li:hover {
 .theme-toggle__icon {
   width: 24px;
   height: 24px;
+
   opacity: 0.4;
-  transition: opacity 0.3s ease, filter 0.3s ease;
+
+  transition:
+    opacity 0.3s ease,
+    filter 0.3s ease;
 }
 
-:root:not([data-theme="dark"]) #btn-light .theme-toggle__icon {
+:root:not([data-theme="dark"])
+  #btn-light
+  .theme-toggle__icon {
   opacity: 1;
 }
 
-[data-theme="dark"] #btn-dark .theme-toggle__icon {
+[data-theme="dark"]
+  #btn-dark
+  .theme-toggle__icon {
   opacity: 1;
   filter: invert(1);
 }
 
-[data-theme="dark"] #btn-light .theme-toggle__icon {
+[data-theme="dark"]
+  #btn-light
+  .theme-toggle__icon {
   opacity: 0.4;
 }
 
-/* 2. Кнопка Menu (Десктоп) */
-/* ==============================================
-   БОРДЕР И ЛИНИИ БУРГЕРА
-   ============================================== */
+   /* DESKTOP MENU BUTTON */
+
 .menu__btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  cursor: pointer;
+
+  padding: 4px 0;
+
+  color: var(--text-color-primary);
+  font: var(--font-heading3);
+
   background: transparent;
   border: none;
   border-bottom: 2px solid transparent;
-  transition: border-color 0.3s ease, color 0.3s ease;
-  padding: 4px 0;
-  color: var(--text-color-primary);
-  font: var(--font-heading3);
-  position: relative;
-  z-index: 101; /* Чтобы бургер был поверх выпадающего меню */
+
+  cursor: pointer;
+
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .menu__btn:hover {
@@ -252,174 +280,138 @@ header nav ul li:hover {
 .menu__btn-text img {
   width: 20px;
   height: 20px;
+
   transition: filter 0.3s ease;
 }
-
+.menu__btn-text,
+.menu__btn-icon,
+.menu__btn-icon span {
+  pointer-events: none;
+}
 [data-theme="dark"] .menu__btn-text img {
   filter: invert(1);
 }
 
-/* Иконка бургера (две параллельные линии) */
+/* Бургер скрыт на desktop */
 .menu__btn-icon {
-  display: none; /* Скрываем на десктопе */
-  width: 16px;
-  height: 12px;
-  position: relative;
+  display: none;
 }
 
-.menu__btn-icon span {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background-color: var(--text-color-primary);
-  border-radius: 2px;
-  position: absolute;
-  transition: transform 0.3s ease, top 0.3s ease, bottom 0.3s ease;
-}
+  /* MOBILE MENU*/
 
-.menu__btn-icon span:first-child {
-  top: 2px;
-}
-
-.menu__btn-icon span:last-child {
-  bottom: 2px;
-}
-
-/* Анимация крестика при открытии */
-.menu__btn--active .menu__btn-icon span:first-child {
-  top: 5px;
-  transform: rotate(45deg);
-}
-
-.menu__btn--active .menu__btn-icon span:last-child {
-  bottom: 5px;
-  transform: rotate(-45deg);
-}
-
-/* Ссылка Menu внутри навигации (для мобилок) */
 .nav__menu-btn {
   display: none;
 }
 
-/* ==============================================
-   АДАПТИВ (ПОДОГНАН ПОД БРЕЙКПОИНТ 768px)
-   ============================================== */
-@media (max-width: 768px) {
-  /* Переключаем кнопку десктопа в бургер */
-  .menu__btn-text {
-    display: none;
+@media (max-width: 850px) {
+  header {
+    position: relative;
+    z-index: 1000;
   }
 
-  .menu__btn-icon {
-    display: block;
+  header nav {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 100px 20px 40px;
+
+    background-color: var(--bg-color-page);
+
+    transform: translateY(-100%);
+    visibility: hidden;
+
+    transition:
+      transform 0.4s ease,
+      visibility 0s linear 0.4s;
+
+    z-index: 999;
   }
 
-  /* Показываем кнопку перехода в меню внутри выпадающего меню */
+  header nav.nav--active {
+    transform: translateY(0);
+    visibility: visible;
+
+    transition:
+      transform 0.4s ease,
+      visibility 0s;
+  }
+
+  header nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 40px;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  header nav ul li a {
+    font-size: 32px;
+    line-height: 125%;
+    font-weight: 600;
+  }
   .nav__menu-btn {
     display: inline-flex;
+
     align-items: center;
     gap: 8px;
-    font-size: 24px;
-    font-weight: 600;
+
+    margin-top: 60px;
+
     color: var(--text-color-primary);
+
+    font-size: 32px;
+    line-height: 125%;
+    font-weight: 600;
+
     text-decoration: none;
   }
 
   .nav__menu-btn img {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
+
+    transition: filter 0.3s ease;
   }
 
-  /* Выпадающее меню на полный экран */
-  nav {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: var(--bg-color-page);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 60px;
-    padding: 40px;
-    transition: transform 0.4s ease-in-out;
-    transform: translateY(-100%); /* Прячем вверх */
-    z-index: 100;
-  }
-
-  /* Состояние открытого меню */
-  nav.nav--active {
-    transform: translateY(0);
-  }
-
-  nav ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  nav ul li a {
-    font-size: 32px;
-    line-height: 125%;
-    font-weight: 600;
-    color: var(--text-color-primary);
-    text-decoration: none;
-  }
-
-  /* Блокировка скролла страницы при открытом меню */
-  body.no-scroll {
-    overflow: hidden;
-  }
-}
-
-@media (max-width: 850px) {
-  header nav {
-    display: none;
+  [data-theme="dark"] .nav__menu-btn img {
+    filter: invert(1);
   }
 
   .menu__btn {
+    position: relative;
+    z-index: 1001;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     width: 44px;
     height: 44px;
-    border-radius: 50%;
-    border: 1px solid var(--border-color-primary);
+
     padding: 0;
+
+    border: 1px solid var(--border-color-primary);
+    border-radius: 50%;
+
     background-color: transparent;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
 
-  .menu__btn-text {
-    display: none;
-  }
-
-  .menu__btn-icon {
-    display: block;
-    position: relative;
-    width: 18px;
-    height: 2px;
-    background-color: var(--text-color-primary);
-    border-radius: 2px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-  }
-
-  .menu__btn-icon::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: -6px;
-    width: 18px;
-    height: 2px;
-    background-color: var(--text-color-primary);
-    border-radius: 2px;
-    transition: transform 0.3s ease, top 0.3s ease, background-color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease;
   }
 
   .menu__btn:hover {
@@ -427,9 +419,61 @@ header nav ul li:hover {
     border-color: var(--bg-color-container);
   }
 
-  .menu__btn:hover .menu__btn-icon,
-  .menu__btn:hover .menu__btn-icon::before {
+  .menu__btn-text {
+    display: none;
+  }
+
+  .menu__btn-icon {
+    position: relative;
+
+    display: block;
+
+    width: 18px;
+    height: 14px;
+  }
+
+  .menu__btn-icon span {
+    position: absolute;
+    left: 0;
+
+    width: 18px;
+    height: 2px;
+
+    border-radius: 2px;
+
+    background-color: var(--text-color-primary);
+
+    transition:
+      transform 0.3s ease,
+      top 0.3s ease,
+      bottom 0.3s ease,
+      background-color 0.3s ease;
+  }
+
+  .menu__btn-icon span:first-child {
+    top: 2px;
+  }
+
+  .menu__btn-icon span:last-child {
+    bottom: 2px;
+  }
+
+  .menu__btn:hover .menu__btn-icon span {
     background-color: var(--text-color-inverse);
+  }
+
+  .menu__btn--active .menu__btn-icon span:first-child {
+    top: 6px;
+    transform: rotate(45deg);
+  }
+
+  .menu__btn--active .menu__btn-icon span:last-child {
+    top: 6px;
+    bottom: auto;
+    transform: rotate(-45deg);
+  }
+  body.no-scroll {
+    overflow: hidden;
   }
 }
 /* hero-coffee ------------ */
