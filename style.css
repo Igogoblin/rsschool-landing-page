@@ -570,17 +570,66 @@ header nav ul li:hover {
   }
 }
 /* favorite-coffee ------------ */
-/* Контейнер маскирует вылезающие карточки */
+.favorite-coffee {
+  height: 799px;
+  margin: 100px 0 100px 0;
+}
+.favorite-coffee .wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  gap: 20px;
+}
+.favorite-coffee h2 {
+  font: var(--font-heading2);
+  color: var(--text-color-primary);
+  margin: 0 auto;
+  text-align: center;
+}
+.favorite-coffee h2 span {
+  font: var(--font-heading2-accent);
+  color: var(--text-color-accent);
+}
+.slider {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.slider__btn {
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--border-color-inverse);
+  border-radius: 100px;
+  cursor: pointer;
+}
+.slider__btn img {
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
+}
+.slider__btn:hover {
+ background-color: var(--bg-color-container);
+}
+.slider__btn:hover img {
+  filter: invert(1);
+}
+[data-theme="dark"] .slider__btn img {
+  filter: invert(1);
+}
+.slider__btn--prev {
+  transform: rotate(180deg);
+}
 .slider-container {
-  width: 480px;
+  width: 100%;
+  max-width: 480px;
   overflow: hidden;
   margin: 0 auto;
 }
 
-/* Трек выстраивает карточки в одну линию и плавно двигается */
 .slider-track {
   display: flex;
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
   width: 100%;
 }
 
@@ -590,15 +639,68 @@ header nav ul li:hover {
   justify-content: center;
   align-items: center;
   gap: 32px;
-  min-width: 480px; /* Фиксируем ширину карточки под размер контейнера */
-  max-width: 480px;
+  width: 100%;
+  min-width: 100%;
   box-sizing: border-box;
-  flex-shrink: 0;   /* Запрещаем сжатие карточек */
-  border-radius: 40px;
+  flex-shrink: 0;
+}
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
 }
 
+.slider-dots__dot {
+  width: 40px;
+  height: 4px;
+  padding: 0;
+  border: none;
+  background-color: var(--border-color-primary, #c1b6ad);
+  border-radius: 100px;
+  cursor: pointer;
+  overflow: hidden;
+  /* position: relative; */
+}
+
+.slider-dots__line {
+  display: block;
+  height: 100%;
+  width: 0;
+  background-color: var(--text-color-primary, #403f3d);
+  border-radius: 100px;
+  transition: width 0.3s ease;
+}
+
+/* Заполнение для активной точки */
+.slider-dots__dot--active .slider-dots__line {
+  width: 100%;
+  animation: progress 0.1s linear forwards;
+}
+
+/* Пауза анимации при наведении на слайдер или кнопку */
+.favorite-coffee:hover .slider-dots__dot--active .slider-dots__line {
+  animation: progress 0.5s linear forwards;
+}
+
+@keyframes progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
 /* Изменения для адаптивности */
 @media (max-width: 700px) {
+   .favorite-coffee .wrapper {
+    padding: 0 13px;
+  }
+  .favorite-coffee h2,
+  .favorite-coffee h2 span {
+    font-size: 32px;
+    line-height: 125%;
+  }
   .slider-container {
     width: 100%;
     max-width: 348px;
@@ -607,6 +709,8 @@ header nav ul li:hover {
   .slider-card {
     min-width: 100%;
     max-width: 348px;
+        margin: 0 auto;
+    gap: 16px;
   }
 }
 /* about ------------ */
