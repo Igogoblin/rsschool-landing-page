@@ -571,7 +571,7 @@ header nav ul li:hover {
 }
 /* favorite-coffee ------------ */
 .favorite-coffee {
-  height: 799px;
+  max-height: 799px;
   margin: 100px 0 100px 0;
 }
 .favorite-coffee .wrapper {
@@ -660,7 +660,6 @@ header nav ul li:hover {
   border-radius: 100px;
   cursor: pointer;
   overflow: hidden;
-  /* position: relative; */
 }
 
 .slider-dots__line {
@@ -672,13 +671,11 @@ header nav ul li:hover {
   transition: width 0.3s ease;
 }
 
-/* Заполнение для активной точки */
 .slider-dots__dot--active .slider-dots__line {
   width: 100%;
   animation: progress 0.1s linear forwards;
 }
 
-/* Пауза анимации при наведении на слайдер или кнопку */
 .favorite-coffee:hover .slider-dots__dot--active .slider-dots__line {
   animation: progress 0.5s linear forwards;
 }
@@ -691,8 +688,11 @@ header nav ul li:hover {
     width: 100%;
   }
 }
-/* Изменения для адаптивности */
+
 @media (max-width: 700px) {
+  .favorite-coffee {
+  margin: 40px 0 40px 0;
+}
    .favorite-coffee .wrapper {
     padding: 0 13px;
   }
@@ -712,6 +712,11 @@ header nav ul li:hover {
         margin: 0 auto;
     gap: 16px;
   }
+}
+@media (max-width: 520px) {
+.slider__btn {
+  display: none;
+}
 }
 /* about ------------ */
 .about {
