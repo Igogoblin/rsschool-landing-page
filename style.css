@@ -1310,3 +1310,224 @@ display: flex;
     display: none;
   } */
 }
+
+/* модальное окно ------------ */
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* Модальное окно и оверлей */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.modal.modal--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Затемнённая область вокруг окна */
+.modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(64, 60, 56, 0.8);
+  backdrop-filter: blur(2px);
+}
+
+/* Контейнер модального окна */
+.modal__content {
+  position: relative;
+  z-index: 1001;
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+  padding: 16px;
+  border-radius: 40px;
+  background-color: var(--bg-color-page, #e1d4c9);
+  color: var(--text-color-primary, #403c38);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+[data-theme="dark"]
+.modal__content {
+  background-color: var(--bg-color-page, #403c38);
+  color: var(--text-color-primary, #e1d4c9);
+}
+
+.modal__img-wrapper {
+  width: 310px;
+  height: 310px;
+  flex-shrink: 0;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.modal__img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal__info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-grow: 1;
+}
+
+.modal__title {
+  font-size: 24px;
+  line-height: 125%;
+  margin: 0;
+}
+
+.modal__description {
+  font: var(--font-medium, 16px/150% sans-serif);
+  margin: 0;
+}
+
+.modal__option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal__option-label {
+  font-size: 16px;
+}
+
+.modal__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.modal-option-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px 8px 8px;
+  border: 1px solid var(--border-color-primary, #c1b6ad);
+  border-radius: 100px;
+  background-color: transparent;
+  color: var(--text-color-primary, #403c38);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font: var(--font-medium, 16px sans-serif);
+}
+
+.modal-option-btn__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--border-color-primary, #c1b6ad);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.modal-option-btn--active {
+  background-color: var(--bg-color-page, #665f55);
+  border-color: var(--bg-color-page, #665f55);
+  color: var(--text-color-inverse, #f1ebe6);
+}
+
+.modal-option-btn--active .modal-option-btn__icon {
+  background-color: var(--bg-color-container, #e1d4c9);
+  color: var(--text-color-primary, #403c38);
+}
+
+.modal__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  line-height: 125%;
+  font-weight: 600;
+}
+
+.modal__alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color-primary, #c1b6ad);
+  font-size: 10px;
+  line-height: 140%;
+}
+
+.modal__alert-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid var(--text-color-primary, #403c38);
+  font-size: 10px;
+}
+
+.modal__alert-text {
+  margin: 0;
+}
+
+.modal__close-btn {
+  width: 100%;
+  height: 44px;
+  border-radius: 100px;
+  border: 1px solid var(--border-color-primary, #c1b6ad);
+  background-color: transparent;
+  color: var(--text-color-primary, #403c38);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.modal__close-btn:hover {
+  background-color: var(--bg-color-page, #665f55);
+  border-color: var(--bg-color-page, #665f55);
+  color: var(--text-color-inverse, #f1ebe6);
+}
+
+
+@media (max-width: 768px) {
+  .modal__content {
+    max-width: 688px;
+  }
+  .modal__img-wrapper {
+    display: none; 
+  }
+}
+
+@media (max-width: 500px) {
+  .modal {
+    padding: 9px;
+  }
+  .modal__content {
+    max-width: 342px;
+    padding: 16px;
+  }
+  .modal-option-btn {
+    padding: 6px 12px 6px 6px;
+  }
+}

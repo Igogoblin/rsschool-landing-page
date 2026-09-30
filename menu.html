@@ -223,6 +223,41 @@
             </div>
         </div>
     </footer>
+    <!-- Модальное окно товара -->
+    <div class="modal" id="product-modal" aria-hidden="true">
+        <div class="modal__overlay" id="modal-overlay"></div>
+        <div class="modal__content" role="dialog" aria-modal="true">
+            <div class="modal__img-wrapper">
+                <img src="" alt="" id="modal-img">
+            </div>
+            <div class="modal__info">
+                <h3 class="modal__title" id="modal-title"></h3>
+                <p class="modal__description" id="modal-description"></p>
+
+                <div class="modal__option-group">
+                    <span class="modal__option-label">Size</span>
+                    <div class="modal__options" id="modal-sizes"></div>
+                </div>
+
+                <div class="modal__option-group">
+                    <span class="modal__option-label">Add-ins</span>
+                    <div class="modal__options" id="modal-addins"></div>
+                </div>
+
+                <div class="modal__total">
+                    <span class="modal__total-label">Total:</span>
+                    <span class="modal__total-price" id="modal-price">$0.00</span>
+                </div>
+
+                <div class="modal__alert">
+                    <span class="modal__alert-icon">i</span>
+                    <p class="modal__alert-text">The cost is not final. Price depends on the selected ingredients.</p>
+                </div>
+
+                <button class="modal__close-btn" id="modal-close-btn" type="button">Close</button>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 
