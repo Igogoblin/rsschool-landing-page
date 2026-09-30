@@ -1,0 +1,142 @@
+[
+  {
+    "name": "Irish coffee",
+    "description": "Fragrant black coffee with Jameson Irish whiskey and whipped milk",
+    "price": "7.00",
+    "category": "coffee",
+    "image": "./images/irish.png"
+  },
+  {
+    "name": "Kahlua coffee",
+    "description": "Classic coffee with milk and Kahlua liqueur under a cap of frothed milk",
+    "price": "7.00",
+    "category": "coffee",
+    "image": "./images/kahlua.png"
+  },
+  {
+    "name": "Honey raf",
+    "description": "Espresso with frothed milk, cream and aromatic honey",
+    "price": "5.50",
+    "category": "coffee",
+    "image": "./images/honey.png"
+  },
+  {
+    "name": "Ice cappuccino",
+    "description": "Cappuccino with soft thick foam in summer version with ice",
+    "price": "5.00",
+    "category": "coffee",
+    "image": "./images/ice.png"
+  },
+  {
+    "name": "Espresso",
+    "description": "Classic black coffee",
+    "price": "4.50",
+    "category": "coffee",
+    "image": "./images/espresso.png"
+  },
+  {
+    "name": "Latte",
+    "description": "Espresso coffee with the addition of steamed milk and dense milk foam",
+    "price": "5.50",
+    "category": "coffee",
+    "image": "./images/latte.png"
+  },
+  {
+    "name": "Latte macchiato",
+    "description": "Espresso with frothed milk and chocolate",
+    "price": "5.50",
+    "category": "coffee",
+    "image": "./images/macchiato.png"
+  },
+  {
+    "name": "Coffee with cognac",
+    "description": "Fragrant black coffee with cognac and whipped cream",
+    "price": "6.50",
+    "category": "coffee",
+    "image": "./images/cognac.png"
+  },
+  {
+    "name": "Moroccan Tea",
+    "description": "Fragrant green tea with fresh mint leaves, cinnamon and orange citrus",
+    "price": "4.50",
+    "category": "tea",
+    "image": "./images/tea-1.png"
+  },
+  {
+    "name": "Ginger Lemon Tea",
+    "description": "Warming black tea infused with fresh ginger root, lemon and natural honey",
+    "price": "5.00",
+    "category": "tea",
+    "image": "./images/tea-2.png"
+  },
+  {
+    "name": "Berry Explosion",
+    "description": "Rich herbal tea mixture with raspberries, blackberries and hibiscus flowers",
+    "price": "5.50",
+    "category": "tea",
+    "image": "./images/tea-3.png"
+  },
+  {
+    "name": "Classic Earl Grey",
+    "description": "Ceylon black tea enriched with natural bergamot essential oil",
+    "price": "4.00",
+    "category": "tea",
+    "image": "./images/tea-4.png"
+  },
+  {
+    "name": "Creme Brulee",
+    "description": "Rich custard base topped with a layer of hardened caramelized sugar",
+    "price": "6.00",
+    "category": "dessert",
+    "image": "./images/dessert-1.png"
+  },
+  {
+    "name": "Cheesecake New York",
+    "description": "Classic dense creamy cheesecake on a crunchy graham cracker crust",
+    "price": "6.50",
+    "category": "dessert",
+    "image": "./images/dessert-2.png"
+  },
+  {
+    "name": "Chocolate Lava Cake",
+    "description": "Warm chocolate cake with a molten chocolate center, served hot",
+    "price": "7.00",
+    "category": "dessert",
+    "image": "./images/dessert-3.png"
+  },
+  {
+    "name": "Tiramisu Classic",
+    "description": "Traditional Italian dessert with ladyfingers soaked in espresso and mascarpone",
+    "price": "6.50",
+    "category": "dessert",
+    "image": "./images/dessert-4.png"
+  },
+  {
+    "name": "Pancake Cake",
+    "description": "Delicate layers of thin French cremes filled with sweet vanilla whipped cream",
+    "price": "5.50",
+    "category": "dessert",
+    "image": "./images/dessert-5.png"
+  },
+  {
+    "name": "Honey Cake (Medovik)",
+    "description": "Classic layered honey cake with delicate sour cream filling and roasted nuts",
+    "price": "6.00",
+    "category": "dessert",
+    "image": "./images/dessert-6.png"
+  },
+  {
+    "name": "Snickers Pastry",
+    "description": "Rich chocolate biscuit layered with soft caramel, peanuts, and milk chocolate",
+    "price": "6.50",
+    "category": "dessert",
+    "image": "./images/dessert-7.png"
+  },
+  {
+    "name": "Coffee Cake",
+    "description": "Moist espresso-infused sponge cake topped with coffee cream and cocoa powder",
+    "price": "6.00",
+    "category": "dessert",
+    "image": "./images/dessert-8.png"
+  }
+]

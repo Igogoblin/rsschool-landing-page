@@ -156,3 +156,64 @@ function updateSlider(index) {
     }
   }, { passive: true });
 });
+
+// выбор продуктов
+document.addEventListener('DOMContentLoaded', () => {
+  const menuList = document.getElementById('menu-list');
+  const tabs = document.querySelectorAll('.offer-tab');
+  let productsData = [];
+
+  async function fetchProducts() {
+    try {
+      const response = await fetch('./products.json');
+      if (!response.ok) {
+        throw new Error(`Ошибка загрузки: ${response.status}`);
+      }
+      productsData = await response.json();
+      
+      renderCategory('coffee');
+    } catch (error) {
+      console.error('Не удалось загрузить данные меню:', error);
+    }
+  }
+
+  function renderCategory(category) {
+    if (!menuList) return;
+
+    menuList.innerHTML = '';
+
+    const filteredProducts = productsData.filter(item => item.category === category);
+
+    filteredProducts.forEach(item => {
+      const card = document.createElement('div');
+      card.classList.add('menu-list__item');
+
+      card.innerHTML = `
+        <div class="menu-list__item-img">
+            <img src="${item.image}" alt="${item.name}">
+        </div>
+        <div class="menu-list__item-info">
+            <h2 class="menu-list__item-title">${item.name}</h2>
+            <p class="menu-list__item-text">${item.description}</p>
+            <p class="menu-list__item-price">$${item.price}</p>
+        </div>
+      `;
+
+      menuList.appendChild(card);
+    });
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      const currentTab = e.currentTarget;
+      const selectedCategory = currentTab.dataset.tab;
+
+      tabs.forEach(t => t.classList.remove('offer-tab--active'));
+      currentTab.classList.add('offer-tab--active');
+
+      renderCategory(selectedCategory);
+    });
+  });
+
+  fetchProducts();
+});
